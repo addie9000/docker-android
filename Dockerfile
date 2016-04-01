@@ -3,7 +3,6 @@ FROM java:8
 MAINTAINER addie <addie9000+dockerhub@gmail.com>
 
 # Setup prerequests
-#RUN dpkg --add-architecture i386
 RUN apt-get update
 RUN apt-get install -y lib32stdc++6 lib32z1 make file
 RUN apt-get clean
