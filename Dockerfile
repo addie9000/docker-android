@@ -4,8 +4,12 @@ MAINTAINER addie <addie9000+dockerhub@gmail.com>
 
 # Setup prerequests
 RUN apt-get update
-RUN apt-get install -y lib32stdc++6 lib32z1 make file
+RUN apt-get install -y lib32stdc++6 lib32z1 make file git
 RUN apt-get clean
+
+# Setup ssh
+# WARNING: Should check finger prints, otherwise there is vulnerable to MITM attack.
+RUN ssh-keyscan -t rsa,dsa,ecdsa github.com | sed "/^ *#/d" > /etc/ssh/ssh_known_hosts
 
 # Setup Android SDK
 RUN curl -L http://dl.google.com/android/android-sdk_r24.4.1-linux.tgz | tar xzC /opt
